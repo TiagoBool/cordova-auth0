@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    id="com.auth0.sdk"
+    id="cordova-plugin-auth0"
     version="0.1.1">
 
   <name>Auth0</name>
@@ -16,8 +16,8 @@
   
   <asset src="www/auth0.js" target="auth0.js" />
 
-  <js-module src="www/auth0.js" name="Auth0Client">
-    <clobbers target="Auth0Client" />
+  <js-module src="www/auth0.js" name="auth0">
+    <clobbers target="window.plugins.auth0" />
   </js-module>
 
   <config-file target="config.xml" parent="/*">
