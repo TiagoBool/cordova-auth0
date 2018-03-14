@@ -191,3 +191,13 @@ Auth0Client.prototype._parseResult = function (result) {
 };
 
 module.exports = Auth0Client;
+
+// Installation constructor that binds Auth0Client to window
+Auth0Client.install = function() {
+  if (!window.plugins) {
+    window.plugins = {};
+  }
+  window.plugins.auth0 = new Auth0Client();
+  return window.plugins.auth0;
+};
+cordova.addConstructor(Auth0Client.install);

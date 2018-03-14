@@ -11,7 +11,7 @@
   </description>
 
   <keywords>auth0, oauth, federation, wsfed, adfs, office365, googleapps</keywords>
-
+  <repo>https://github.com/TiagoBool/cordova-auth0.git</repo>
   <license>MIT</license>
   
   <asset src="www/auth0.js" target="auth0.js" />

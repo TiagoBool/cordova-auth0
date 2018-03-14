@@ -1,0 +1,34 @@
+{
+  "name": "cordova-plugin-auth0",
+  "version": "0.0.1",
+  "description": "Auth0 plugin for PhoneGap/Apache Cordova",
+  "cordova": {
+    "id": "cordova-plugin-auth0",
+    "platforms": [
+      "android",
+	  "ios",
+	  "windows8"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TiagoBool/cordova-auth0.git"
+  },
+  "keywords": [
+    "auth0",
+    "oauth",
+    "federation",
+    "wsfed",
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.0.0"
+    }
+  ],
+  "author": "Tiago Vital <toago@bool.pt>",
+  "license": "MIT",
+  "homepage": "https://github.com/TiagoBool/cordova-auth0"
+}
