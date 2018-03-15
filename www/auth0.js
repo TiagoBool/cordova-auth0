@@ -1,4 +1,4 @@
-function Auth0Client(domain, clientId) {
+function Auth0Client(AppDomain, Auth0Domain, Auth0ClientId) {
 
   // validations
   if (!$) throw new Error('You must include jquery to use Auth0 plugin');
@@ -10,8 +10,9 @@ function Auth0Client(domain, clientId) {
   this.UserInfoEndpoint       = "https://{domain}/userinfo?access_token=";
   this.DefaultCallback        = "https://{domain}/mobile";
 
-  this.domain = domain;
-  this.clientId = clientId;
+  this.appdomain = AppDomain;
+  this.domain = Auth0Domain;
+  this.clientId = Auth0ClientId;
 }
 
 Auth0Client.prototype.login = function (options, callback) {
@@ -80,7 +81,7 @@ Auth0Client.prototype.login = function (options, callback) {
     
     var authorizeUrl = this.AuthorizeUrl.replace(/{domain}/, this.domain);
     var loginWidgetUrl = this.LoginWidgetUrl.replace(/{domain}/, this.domain);
-    var callbackUrl = this.DefaultCallback.replace(/{domain}/, this.domain);
+    var callbackUrl = this.DefaultCallback.replace(/{domain}/, this.appdomain);
 
     authorizeUrl += "?client_id=" + this.clientId + "&redirect_uri=" + callbackUrl + "&response_type=token&scope=" + options.scope + "&connection=" + options.connection;
     loginWidgetUrl += "?client=" + this.clientId + "&redirect_uri=" + callbackUrl + "&response_type=token&scope=" + options.scope;
