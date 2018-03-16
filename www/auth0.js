@@ -1,4 +1,4 @@
-function Auth0Client(AppDomain, Auth0Domain, Auth0ClientId) {
+function Auth0Client(AppDomain, AppCallback, Auth0Domain, Auth0ClientId) {
 
   // validations
   if (!$) throw new Error('You must include jquery to use Auth0 plugin');
@@ -9,7 +9,8 @@ function Auth0Client(AppDomain, Auth0Domain, Auth0ClientId) {
   this.DelegationEndpoint     = "https://{domain}/delegation";
   this.UserInfoEndpoint       = "https://{domain}/userinfo?access_token=";
   this.DefaultCallback        = "https://{domain}/mobile";
-
+  
+  this.DefaultCallback = AppCallback;
   this.appdomain = AppDomain;
   this.domain = Auth0Domain;
   this.clientId = Auth0ClientId;
