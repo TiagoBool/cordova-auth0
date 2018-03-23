@@ -16,7 +16,7 @@ function Auth0Client(AppDomain, AppCallback, Auth0Domain, Auth0ClientId) {
   this.clientId = Auth0ClientId;
 }
 
-Auth0Client.prototype.login = function (options, callback) {
+Auth0Client.prototype.login = function (options, isRedirect, callback) {
 
   if (typeof options === 'function') {
       callback = options;
@@ -89,15 +89,22 @@ Auth0Client.prototype.login = function (options, callback) {
 
     var auth0Url = options.connection ? authorizeUrl : loginWidgetUrl;
 
-    var authWindow = window.open(options.connection ? auth0Url : loginWidgetUrl, '_blank', 'location=no,toolbar=no');
-    authWindow.addEventListener('loadstart', function (e) {
+	var url = (options.connection ? auth0Url : loginWidgetUrl);
+	
+	if(isRedirect){
+		var authWindow = window.open(url, '_blank', 'location=no,toolbar=no');
+		authWindow.addEventListener('loadstart', function (e) {
 
-      if (e.url.indexOf(callbackUrl + '#') !== 0) return;
-      
-      var parsedResult = parseResult(e.url);
-      authWindow.close();
-      return done(null, parsedResult);
-    });
+		  if (e.url.indexOf(callbackUrl + '#') !== 0) return;
+		  
+		  var parsedResult = parseResult(e.url);
+		  authWindow.close();
+		  return done(null, parsedResult);
+		});
+	}else{
+		return url;
+	}	
+		
   }
 };
 
