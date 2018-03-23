@@ -18,6 +18,8 @@ function Auth0Client(AppDomain, AppCallback, Auth0Domain, Auth0ClientId) {
 
 Auth0Client.prototype.login = function (options, isRedirect, callback) {
 
+  this.url;
+  
   if (typeof options === 'function') {
       callback = options;
       options = {};
@@ -102,7 +104,7 @@ Auth0Client.prototype.login = function (options, isRedirect, callback) {
 		  return done(null, parsedResult);
 		});
 	}else{
-		return url;
+		return callback(null, url);
 	}	
 		
   }
